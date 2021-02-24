@@ -1,0 +1,41 @@
+---
+epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+epel_repo_gpg_key_url: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+epel_repofile_path: "/etc/yum.repos.d/epel.repo"
+epel_repo_disable: false
+app_user: "apache"
+http_host: "felix-cop.com"
+http_conf: "felix-cop.com.conf"
+http_ssl_conf: "felix-cop.com-ssl.conf"
+http_port: "80"
+disable_default: true
+domain_name: felix-cop.com
+apache: httpd
+apache_logs: /var/log/httpd/
+apache_dir: /etc/httpd/conf.d/ 
+apache_group: apache
+domain_name: 
+apache_ssl_port: 443 
+ssl_ip: '*'
+log_format: combined
+apache_docroot: /var/www/{{ http_host }}
+crt_file: ca.crt
+key_file: ca.key
+apache_docroot: /var/www/{{ http_host }}
+certs_path: "/etc/pki/tls/certs/{{ http_host }}/"
+path: "/etc/pki/tls/certs/"
+datio_crt_name: "datio.crt"
+datio_key_name: "datio.key"
+
+
+instance_name: "felix-cop"
+instance_image_id: "3bd9d24e-80b1-4adf-82f2-8486c6cc3527"
+instance_flavor: "m1.medium"
+instance_network_id: "35f947c0-9d35-4821-a69e-9d1be2f1d4cb"
+instance_hostname: "felix-cop"
+
+os_keypair_name: "felix"
+pub_key_filename: "/home/frodriguez/.ssh/felix.pub"
+
+
+

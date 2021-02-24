@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  roles:
+    - create_instance
+
+- hosts: k8s
+  become: yes
+  gather_facts: yes
+  remote_user: root
+  roles:
+    - conf_instance
+
+
+
+
+
+
+
+
+        

@@ -1,0 +1,7 @@
+---
+- name: crear keys 
+  os_keypair:
+    state: present
+    name: "{{ key_name }}"
+    public_key_file: "/home/frodriguez/.ssh/id_rsa.pub"
+  register: key

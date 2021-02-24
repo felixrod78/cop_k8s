@@ -1,0 +1,66 @@
+---
+
+- name: Enable mod_ssl on RHEL
+  yum: 
+    name: mod_ssl 
+    state: present
+  
+
+- name: Carpetas para los certs propios
+  file:
+    state: directory
+    path: "{{ certs_path }}"
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Copiar crt
+  copy: 
+    src: "{{ crt_file }}"
+    dest: "{{ certs_path }}{{ datio_crt_name }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copiar key
+  copy: 
+    src: "{{ key_file }}"
+    dest: "{{ certs_path }}{{ datio_key_name }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Generamos la key privada del OpenSSL con los valores por defecto"
+  openssl_privatekey:
+    path: "{{ certs_path }}{{ http_host }}.pem"
+
+
+- name: "Generamos la key privada del OpenSSL con los valores por defecto"
+  openssl_privatekey:
+    path: "{{ certs_path }}{{ http_host }}.key"
+
+- name: Generamos el CSR
+  openssl_csr:
+    path: "{{ certs_path }}{{ http_host }}.csr"
+    privatekey_path:  "{{ certs_path }}{{ http_host }}.key"
+    common_name: "{{ http_host }}"
+
+
+- name: Generate an OpenSSL certificate signed with your own CA certificate
+  openssl_certificate:
+    path: "{{ certs_path }}{{ http_host }}.crt"
+    csr_path: "{{ certs_path }}{{ http_host }}.csr"
+    ownca_path: "{{ certs_path }}{{ datio_crt_name }}"
+    ownca_privatekey_path: "{{ certs_path }}{{ datio_key_name }}"
+    provider: ownca
+
+- name: Componemos la cadena bundle con el CA
+  shell: "cat {{ certs_path }}{{ http_host }}.crt {{ certs_path }}{{ datio_crt_name }} > {{ certs_path }}{{ http_host }}-bundle.crt"
+
+
+
+
+
+
+
+

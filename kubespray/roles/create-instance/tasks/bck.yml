@@ -1,0 +1,57 @@
+---
+- name: create instance
+  os_keypair:
+      state: present
+      auth:
+         auth_url: "{{ auth_url }}"
+         username: "{{ username }}"
+         password: "{{ password }}"
+         project_name: "{{ os_project_name }}"
+         project_id: "{{ os_project_id }}"
+         os_user_domain_name: "{{ os_user_domain_name }}"
+      name: "{{ os_key_name }}"
+      public_key_file: "id_rsa.pub"
+  when: os_instance_state == "present"
+
+- name: Crear / eliminar nueva instancia
+  os_server:
+       state: "{{ os_instance_state }}"
+       auth:
+         auth_url: "{{ os_auth_url }}"
+         username: "{{ os_username }}"
+         password: "{{ os_password }}"
+         project_name: "{{ os_project_name }}"
+         project_id: "{{ os_project_id }}"
+         os_user_domain_name: "{{ os_user_domain_name }}"
+       name: "{{ os_instance_name }}"
+       key_name: "{{ os_key_name }}"
+       image: "{{ os_image }}"
+       flavor: "{{ os_flavor }}"
+       timeout: "{{ os_timeout }}"
+       network: "{{ os_network }}"
+       meta:
+         hostname: "{{ os_hostname }}"
+
+
+#####esta funciona
+---
+- name: Crear nueva instancia
+  os_server:
+       state: present
+       name: "{{ instance_name }}"
+       key_name: "{{ key_name }}"
+       image: "{{ image }}"
+       flavor: "{{ flavor }}"
+       network: "{{ network }}"
+     
+  register: infra
+- debug:
+    var: infra
+
+- name: Add CentOS Instance to Inventory
+  add_host: name="webserver" groups="webservers"
+            ansible_ssh_host={{ infra.server.public_v4 }}
+            ansible_user= "cloud-user"
+  register: host
+- debug:
+    var: host 

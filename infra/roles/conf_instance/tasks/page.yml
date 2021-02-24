@@ -1,0 +1,32 @@
+---
+- name: Create document root
+  file:
+    path: "/var/www/{{ http_host }}"
+    state: directory
+    owner: "{{ app_user }}"
+    mode: '0755'
+    
+
+- name: Copy index test page
+  template:
+    src: "templates/index.html.j2"
+    dest: "/var/www/{{ http_host }}/index.html"
+    mode: '0755'
+
+- name: Set up Apache virtuahHost
+  template:
+    src: "templates/apache.conf.j2"
+    dest: "/etc/httpd/conf.d/{{ http_conf }}"
+  notify: restart_apache
+
+- name: Create Apache vhost 
+  template: 
+    src: "templates/vhost_ssl.conf.j2" 
+    dest: "/etc/httpd/conf.d/{{ http_ssl_conf }}"  
+  notify: restart_apache
+
+    
+
+
+
+

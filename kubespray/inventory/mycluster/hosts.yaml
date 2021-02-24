@@ -1,0 +1,37 @@
+all:
+  hosts:
+    node1:
+      ansible_host: 172.16.51.251
+      ansible_user: cloud-user 
+      ip: 192.168.25.19
+      access_ip: 172.16.51.251
+    node2:
+      ansible_host: 172.16.51.196
+      ansible_user: cloud-user
+      ip: 192.168.25.114
+      access_ip: 172.16.51.196
+    master:
+      ansible_host: 172.16.51.179
+      ansible_user: cloud-user
+      ip: 192.168.25.98
+      access_ip: 172.16.51.179
+  children:
+    kube-master:
+      hosts:
+        master:
+    kube-node:
+      hosts:
+        node1:
+        node2:
+        master:
+    etcd:
+      hosts:
+        node1:
+        node2:
+        master:
+    k8s-cluster:
+      children:
+        kube-master:
+        kube-node:
+    calico-rr:
+      hosts: {}

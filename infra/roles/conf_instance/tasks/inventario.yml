@@ -1,0 +1,25 @@
+---
+
+- name: Import instance vars info
+  include_vars:
+    file: "roles/conf_instance/defaults/main.yml"
+
+- name: Get openstack instances info
+  os_server_info:
+  register: os_server_info_response
+
+- name: "Get floating/public OpenStack instance IP"
+  set_fact:
+    instance_public_ip: "{{ item.public_v4 }}"
+  when: item.name == instance_name
+  loop: "{{ os_server_info_response.openstack_servers }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Generate inventory file with the host
+  template:
+    src: os_inventory.j2
+    dest: "inventory/hosts"
+
+- name: Refresh inventory
+  meta: refresh_inventory

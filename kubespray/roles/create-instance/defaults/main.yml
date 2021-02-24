@@ -1,0 +1,18 @@
+---
+project_name: "cop-ansible"
+user_domain_name: "operations"
+project_id: "d0f3b28924d4414d9ac36c0224131d65"
+instance_name: "felix-cop"
+image: "c60877a1-e7cb-48ad-97b3-143a8e87e808"
+flavor: "d1.medium"
+timeout: "200"
+network: "40128f87-4009-4599-a0b6-cdf237842c43"
+hostname: "felix-cop"
+key_name: "felix-cop"
+public_key_file: /home/frodriguez/.ssh/id_rsa.pub
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+---
+
+- import_tasks: repo.yml
+  tags:
+    - repo
+
+- import_tasks: inventario.yml
+  tags:
+    - inventario
+
+
+
+
+  
+  
+    

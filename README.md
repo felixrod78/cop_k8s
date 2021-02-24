@@ -109,3 +109,12 @@ Install K8s Cluster Using Ansible Playbook
 Deploy K8s cluster with Kubespray Ansible Playbook:
 
 # ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root cluster.yml
+Server remoto
+ sudo cp /root/.kube/config /home/cloud-user/
+sudo chown cloud-user /home/cloud-user/config 
+
+Local
+scp cloud-user@172.16.51.179:/home/cloud-user/config conections/
+cambiar ip a publica 
+
+ kubectl --kubeconfig /home/frodriguez/Desktop/FORMACION/cop_k8s/conections/config get namespaces

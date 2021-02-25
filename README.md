@@ -2,7 +2,7 @@
 
 Comunidad de conocimiento y práctica donde desplegaremos un cluster de K8s con Kubespray en Openstack
 
-![]](https://img.shields.io/github/last-commit/felixrod78/cop_k8s) ![](https://img.shields.io/github/issues-pr/felixrod78/cop_k8s?style=plastic) ![](https://img.shields.io/github/languages/code-size/felixrod78/cop_k8s) ![](https://img.shields.io/badge/CoP-K8s-brightgreen)
+![](https://img.shields.io/github/last-commit/felixrod78/cop_k8s) ![](https://img.shields.io/github/issues-pr/felixrod78/cop_k8s?style=plastic) ![](https://img.shields.io/github/languages/code-size/felixrod78/cop_k8s) ![](https://img.shields.io/badge/CoP-K8s-brightgreen)
 
 
 ### Objetivos

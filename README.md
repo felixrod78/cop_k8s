@@ -52,7 +52,7 @@ all:
       ansible_user: cloud-user 
       ip: IP privada
       access_ip: : IP Publica de acceso
-	  ```
+ ```
 
 Configurar tus variables 
 

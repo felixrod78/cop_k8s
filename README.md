@@ -13,18 +13,16 @@ Comunidad de conocimiento y práctica donde desplegaremos un cluster de K8s con 
 ### Requerimientos
 
 > ansible 2.9
+
 >python3 
-pip:
+
+>pip:
   -kubernetes
   -openshift
   -google.auth
 
 
-
-
-##  Paso a paso
-
-### Creación infra en Openstack
+# Creación infra en Openstack
 
 Descarga archivo credenciales desde Horizon
  ```bash
@@ -40,7 +38,7 @@ En dichos roles, configuraremos las instancias,repos,claves de acceso.
 ```bash
 ansible-playbook main.yml
 ```
-### Despliegue cluster K8S con Kubespray
+# Despliegue cluster K8S con Kubespray
 
 Pasos a seguir desde tu maquina controller (local)
 
@@ -99,8 +97,8 @@ master   Ready    master   23h   v1.17.5
 node1    Ready    <none>   23h   v1.17.5
 node2    Ready    <none>   23h   v1.17.5
 ```
-### Empezamos a trabajar en el cluster
-####Creación namespace 
+# Empezamos a trabajar en el cluster
+## Creación namespace  
 Creamos un role "deployments" 
 Ejecutamos exclusivamente el tag específico de creación de namespace
 Usaremos el main.yml para gobernar los despliegues de incrementos del cluster

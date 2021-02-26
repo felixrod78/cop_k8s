@@ -3,7 +3,7 @@
   yum_repository:
     name: rhel-7-server-rpms
     description: rhel-7-server-rpms repo
-    baseurl: http://repo75.asgard.es.datio/repos/rhel-7-server-rpms/
+    baseurl: http://172.16.51.66/repos/rhel-7-server-rpms/
     enabled: yes
     gpgcheck: no
 
@@ -11,7 +11,7 @@
   yum_repository:
     name: rhel-7-server-extras-rpms
     description: rhel-7-server-extras-rpms repo
-    baseurl: http://repo75.asgard.es.datio/repos/rhel-7-server-extras-rpms/
+    baseurl: http://172.16.51.66/repos/rhel-7-server-extras-rpms/
     enabled: yes
     gpgcheck: no
 
@@ -19,7 +19,7 @@
   yum_repository:
     name: rhel-7-server-optional-rpms
     description: rhel-7-server-optional-rpms repo
-    baseurl: http://repo75.asgard.es.datio/repos/rhel-7-server-optional-rpms/
+    baseurl: http://172.16.51.66/repos/rhel-7-server-optional-rpms/
     enabled: yes
     gpgcheck: no
 
@@ -27,7 +27,7 @@
   yum_repository:
     name: rhel-7-server-rh-common-rpms
     description: rhel-7-server-common-rpms repo
-    baseurl: http://repo75.asgard.es.datio/repos/rhel-7-server-rh-common-rpms/
+    baseurl: http://172.16.51.66/repos/rhel-7-server-rh-common-rpms/
     enabled: yes
     gpgcheck: no
 
@@ -35,16 +35,10 @@
   yum_repository:
     name: rhel-7-server-supplementary-rpms
     description: rhel-7-server-supplementary-rpms repo
-    baseurl: http://repo75.asgard.es.datio/repos/rhel-7-server-supplementary-rpms/
+    baseurl: http://172.16.51.66/repos/rhel-7-server-supplementary-rpms/
     enabled: yes
     gpgcheck: no
 
-- name: Install epel rhel-7-server-supplementary-rpms
-  yum_repository:
-    name: epel
-    description: EPEL YUM repo
-    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    enabled: yes
-    gpgcheck: no
+
 
 

@@ -10,6 +10,18 @@ Comunidad de conocimiento y práctica donde desplegaremos un cluster de K8s con 
 - Creación infraestructura automatizada
 - Despliegue básico cluster de K8S con Kubespray
 
+### Requerimientos
+
+> ansible 2.9
+>python3 
+pip:
+  -kubernetes
+  -openshift
+  -google.auth
+
+
+
+
 ##  Paso a paso
 
 ### Creación infra en Openstack
@@ -86,4 +98,22 @@ NAME     STATUS   ROLES    AGE   VERSION
 master   Ready    master   23h   v1.17.5
 node1    Ready    <none>   23h   v1.17.5
 node2    Ready    <none>   23h   v1.17.5
+```
+### Empezamos a trabajar en el cluster
+####Creación namespace 
+Creamos un role "deployments" 
+Ejecutamos exclusivamente el tag específico de creación de namespace
+Usaremos el main.yml para gobernar los despliegues de incrementos del cluster
+
+```bash
+ansible-playbook main.yml --tags "namespace" -vvv
+```
+```bash
+kubectl get namespaces
+NAME              STATUS   AGE
+default           Active   40h
+development       Active   11m
+kube-node-lease   Active   40h
+kube-public       Active   40h
+kube-system       Active   40h  
 ```

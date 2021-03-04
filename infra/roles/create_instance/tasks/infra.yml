@@ -2,7 +2,7 @@
 - name: Crear nueva instancia
   os_server:
        state: present
-       name: master
+       name: master1
        key_name: "{{ key_name }}"
        image: "{{ image }}"
        flavor: "{{ flavor }}"
@@ -15,37 +15,30 @@
 
 - name: Agrega instancia a inventario
   add_host:
-    name: master 
+    name: master1 
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
 
-- name: "Get floating/public OpenStack instance IP"
-  set_fact:
-    instance_public_ip: "{{ item.public_v4 }}"
-  when: item.name == instance_name
-  loop: "{{ infra.openstack_servers }}"
-  loop_control:
-    label: "{{ item.name }}"
 
 - name: Crear nueva instancia
   os_server:
        state: present
-       name: nodo1
+       name: nodo11
        key_name: "{{ key_name }}"
        image: "{{ image }}"
        flavor: "{{ flavor }}"
        network: "{{ network }}"
        meta:
-        hostname: nodo1
+        hostname: nodo11
   register: infra
 - debug:
     var: infra
 
 - name: Agrega instancia a inventario
   add_host:
-    name: nodo1 
+    name: nodo11 
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
@@ -54,20 +47,20 @@
 - name: Crear nueva instancia
   os_server:
        state: present
-       name: nodo2
+       name: nodo22
        key_name: "{{ key_name }}"
        image: "{{ image }}"
        flavor: "{{ flavor }}"
        network: "{{ network }}"
        meta:
-        hostname: nodo2
+        hostname: nodo22
   register: infra
 - debug:
     var: infra
 
 - name: Agrega instancia a inventario
   add_host:
-    name: nodo2 
+    name: nodo22 
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user

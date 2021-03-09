@@ -1,0 +1,5 @@
+---
+
+- import_tasks: namespace.yml
+  tags:
+    - namespace

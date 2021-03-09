@@ -1,0 +1,12 @@
+---
+project_name: "cops"
+user_domain_name: "operations"
+project_id: "7b6b5713793f4c2dadea48e58e479f19"
+instance_name: "felix-cop"
+image: "3bd9d24e-80b1-4adf-82f2-8486c6cc3527"
+flavor: "m1.medium"
+timeout: "200"
+network: "35f947c0-9d35-4821-a69e-9d1be2f1d4cb"
+hostname: "felix-cop"
+key_name: "felix"
+public_key_file: "/home/frodriguez/.ssh/felix.pub"

@@ -15,19 +15,12 @@
 
 - name: Agrega instancia a inventario
   add_host:
-    name: master 
+    name: master
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
 
-- name: "Get floating/public OpenStack instance IP"
-  set_fact:
-    instance_public_ip: "{{ item.public_v4 }}"
-  when: item.name == instance_name
-  loop: "{{ infra.openstack_servers }}"
-  loop_control:
-    label: "{{ item.name }}"
 
 - name: Crear nueva instancia
   os_server:
@@ -45,11 +38,16 @@
 
 - name: Agrega instancia a inventario
   add_host:
-    name: nodo1 
+    name: nodo1
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+- name: Crear inventario fisico
+  template:
+    src: inventario.j2
+    dest: "roles/inventory/hostsfelix"
 
 - name: Crear nueva instancia
   os_server:
@@ -67,11 +65,16 @@
 
 - name: Agrega instancia a inventario
   add_host:
-    name: nodo2 
+    name: nodo2
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+- name: Crear inventario fisico
+  template:
+    src: inventario.j2
+    dest: "roles/inventory/hostsfelix"
 
 
 

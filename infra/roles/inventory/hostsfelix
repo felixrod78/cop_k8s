@@ -1,0 +1,2 @@
+[k8s]
+nodo2    ansible_host=172.16.51.196     ansible_user=cloud-user     become_method=sudo

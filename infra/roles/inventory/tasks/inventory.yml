@@ -1,0 +1,10 @@
+---
+
+- os_server_info:
+    
+    server: k8s
+    filters:
+      vm_state: active
+  register: result
+- debug:
+    msg: "{{ result.openstack_servers }}"

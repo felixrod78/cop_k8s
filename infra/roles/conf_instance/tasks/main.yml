@@ -4,9 +4,7 @@
   tags:
     - repo
 
-- import_tasks: inventario.yml
-  tags:
-    - inventario
+
 
 
 

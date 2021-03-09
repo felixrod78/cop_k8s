@@ -2,7 +2,7 @@
 - name: Crear nueva instancia
   os_server:
        state: present
-       name: master1
+       name: master
        key_name: "{{ key_name }}"
        image: "{{ image }}"
        flavor: "{{ flavor }}"
@@ -15,7 +15,7 @@
 
 - name: Agrega instancia a inventario
   add_host:
-    name: master1 
+    name: master
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
@@ -25,46 +25,56 @@
 - name: Crear nueva instancia
   os_server:
        state: present
-       name: nodo11
+       name: nodo1
        key_name: "{{ key_name }}"
        image: "{{ image }}"
        flavor: "{{ flavor }}"
        network: "{{ network }}"
        meta:
-        hostname: nodo11
+        hostname: nodo1
   register: infra
 - debug:
     var: infra
 
 - name: Agrega instancia a inventario
   add_host:
-    name: nodo11 
+    name: nodo1
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+- name: Crear inventario fisico
+  template:
+    src: inventario.j2
+    dest: "roles/inventory/hostsfelix"
 
 - name: Crear nueva instancia
   os_server:
        state: present
-       name: nodo22
+       name: nodo2
        key_name: "{{ key_name }}"
        image: "{{ image }}"
        flavor: "{{ flavor }}"
        network: "{{ network }}"
        meta:
-        hostname: nodo22
+        hostname: nodo2
   register: infra
 - debug:
     var: infra
 
 - name: Agrega instancia a inventario
   add_host:
-    name: nodo22 
+    name: nodo2
     groups: k8s
     ansible_ssh_host: "{{ infra.server.public_v4 }}"
     ansible_user: cloud-user
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+- name: Crear inventario fisico
+  template:
+    src: inventario.j2
+    dest: "roles/inventory/hostsfelix"
 
 
 

@@ -2,6 +2,7 @@
 - hosts: localhost
   roles:
     - create_instance
+    - inventory
 
 - hosts: k8s
   become: yes

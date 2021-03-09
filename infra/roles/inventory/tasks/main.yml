@@ -1,0 +1,7 @@
+---
+- import_tasks: inventory.yml
+  tags:
+    - inventory
+
+
+

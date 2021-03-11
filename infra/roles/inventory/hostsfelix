@@ -1,2 +1,4 @@
 [k8s]
+master    ansible_host=172.16.51.179     ansible_user=cloud-user     become_method=sudo
+nodo1    ansible_host=172.16.51.251    ansible_user=cloud-user     become_method=sudo
 nodo2    ansible_host=172.16.51.196     ansible_user=cloud-user     become_method=sudo

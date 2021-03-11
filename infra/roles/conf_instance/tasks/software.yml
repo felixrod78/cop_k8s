@@ -1,0 +1,12 @@
+---
+
+
+- name: install pip
+  yum:
+    name: pip
+    state: latest 
+  
+
+- name: Install openshift python package
+  pip:
+    name: openshift

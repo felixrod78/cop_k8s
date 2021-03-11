@@ -1,4 +1,0 @@
----
-# this might be in a file like handlers/handlers.yml
-- name: restart_apache
-  service: name=httpd state=restarted

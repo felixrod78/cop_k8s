@@ -3,6 +3,7 @@
   roles:
     - create_instance
     - inventory
+    
 
 - hosts: k8s
   become: yes
@@ -10,6 +11,7 @@
   remote_user: root
   roles:
     - conf_instance
+    - deployments
 
 
 

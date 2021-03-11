@@ -1,0 +1,5 @@
+---
+- name: Create a Deployment by reading the definition from a local file
+  k8s:
+    state: present
+    src: /files/deployment.yml

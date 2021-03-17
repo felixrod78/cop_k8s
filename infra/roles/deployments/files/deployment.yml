@@ -1,8 +1,11 @@
+
 apiVersion: apps/v1 # Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
   namespace: development
+  labels:
+    app: nginx
 spec:
   selector:
     matchLabels:

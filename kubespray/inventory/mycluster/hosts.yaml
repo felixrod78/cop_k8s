@@ -1,20 +1,20 @@
 all:
   hosts:
     node1:
-      ansible_host: 172.16.51.251
-      ansible_user: cloud-user 
-      ip: 192.168.25.19
-      access_ip: 172.16.51.251
-    node2:
-      ansible_host: 172.16.51.196
-      ansible_user: cloud-user
-      ip: 192.168.25.114
-      access_ip: 172.16.51.196
-    master:
       ansible_host: 172.16.51.179
-      ansible_user: cloud-user
-      ip: 192.168.25.98
+      ansible_user: cloud-user 
+      ip: 192.168.25.132
       access_ip: 172.16.51.179
+    node2:
+      ansible_host: 172.16.51.172
+      ansible_user: cloud-user
+      ip: 192.168.25.177
+      access_ip: 172.16.51.172
+    master:
+      ansible_host: 172.16.51.171
+      ansible_user: cloud-user
+      ip: 192.168.25.122
+      access_ip: 172.16.51.171
   children:
     kube-master:
       hosts:

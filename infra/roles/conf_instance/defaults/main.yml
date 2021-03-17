@@ -26,16 +26,24 @@ certs_path: "/etc/pki/tls/certs/{{ http_host }}/"
 path: "/etc/pki/tls/certs/"
 datio_crt_name: "datio.crt"
 datio_key_name: "datio.key"
-
-
 instance_name: "felix-cop"
 instance_image_id: "3bd9d24e-80b1-4adf-82f2-8486c6cc3527"
 instance_flavor: "m1.medium"
 instance_network_id: "35f947c0-9d35-4821-a69e-9d1be2f1d4cb"
 instance_hostname: "felix-cop"
-
 os_keypair_name: "felix"
 pub_key_filename: "/home/frodriguez/.ssh/felix.pub"
+
+####repo epel
+
+
+epel_package: "epel-release"
+epel_repo_file_path: "/etc/yum.repos.d/epel.repo"
+
+epel_global_downloads_retries: 5
+epel_global_downloads_delay: 2
+epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
 
 
 

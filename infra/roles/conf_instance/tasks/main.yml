@@ -4,9 +4,6 @@
   tags:
     - repo
 
-- import_tasks: software.yml
-  tags:
-    - software
 
 
 
